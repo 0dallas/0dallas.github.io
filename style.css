@@ -68,12 +68,11 @@ section {
 
 .proyecto-contenido {
     
-    margin: 20px;
-    border: 1px solid #ccc;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    border-bottom: 1px solid #ccc; /* agrega un borde inferior de 1px */
+     width: 60%;
+    margin: 20px auto; /* se centra horizontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 img {
 	max-width: 100%;
