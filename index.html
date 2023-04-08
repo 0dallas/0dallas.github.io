@@ -1,50 +1,172 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mis proyectos</title>
+	<title>Portafolio</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<header>
-		<h1>Mis proyectos</h1>
+		<h1>I'am William Figueroa, a passionate about technology</h1>
 	</header>
 	<main>
 	
-		<div class="descripcion">
-			<p>En esta página podrás ver los proyectos que he realizado. Cada proyecto incluye una breve descripción, una imagen y un vídeo que muestra su funcionamiento. En esta página podrás ver los proyectos que he realizado. Cada proyecto incluye una breve descripción, una imagen y un vídeo que muestra su funcionamiento. En esta página podrás ver los proyectos que he realizado. Cada proyecto incluye una breve descripción, una imagen y un vídeo que muestra su funcionamiento. En esta página podrás ver los proyectos que he realizado. Cada proyecto incluye una breve descripción, una imagen y un vídeo que muestra su funcionamiento <a href="https://linktr.ee/willifm.py">enlace</a>.</p>
+		<div class="descripcion" id="intro">
+			<h2 style="text-align: left;" >How am I?</h2>
+			<p style="text-align: justify;">Hi there! I am a data scientist/data analyst with a strong passion for leveraging data to drive  outcomes.</p>
+			<p style="text-align: justify;">In my current role, I am responsible for analyzing large datasets, developing predictive models, and communicating insights to stakeholders across the organization. I work closely with cross-functional teams to identify opportunities for growth and improvement, and I pride myself on delivering high-quality solutions that drive real business value.</p>
+			<p style="text-align: justify;">What I love most about my work is the opportunity to constantly learn and grow. I am always exploring new data science tools and techniques, and I am excited to be a part of an industry that is constantly evolving.</p>
+			<p style="text-align: justify;">If you're looking for a data scientist/data analyst who is passionate about data-driven decision making and delivering measurable results, I would be thrilled to connect with you!</p>
+		
 		</div>
 		<aside>
+			<div class="titulo_aside">
+				<p>Content</p>
+				</div>
 			<nav>
 				<ul>
-					<li><a href="#proyecto1">Proyecto 1</a></li>
-					<li><a href="#proyecto2">Proyecto 2</a></li>
-					<li><a href="#proyecto3">Proyecto 3</a></li>
+					<li><a href="#intro">How am I?</a></li>	
+					<li><a href="#proyecto1">Broken Tooth Detection</a></li>
+					<li><a href="#proyecto2">Human Pose Estimation</a></li>
+					<li><a href="#proyecto3">COVID Map</a></li>
+					<li><a href="#proyecto4">Book review</a></li>
+					<li><a href="#proyecto5">Estimation of demand</a></li>
+					<li><a href="#proyecto6">Centralized page for reports</a></li>
 				</ul>
 			</nav>
 		</aside>
         <div class="proyectos">
 		<section id="proyecto1">
 			<div class="proyecto-contenido">
-                <h2>Proyecto 1</h2>
-				<p>Descripción del proyecto 1.</p>
-				<img src="proyecto1.jpg" alt="Proyecto 1">
-				<video src="proyecto1.mp4" controls></video>
+                <h2>Broken Tooth Detection</h2>
+				<video src="p1.mp4" controls></video>
+				<ul class="lista">
+					<li>Technology</li>
+					<ul>
+						<li>Python(Tensorflow,OpenCV,Numpy,Flask)</li>
+						<li>HTML</li>
+						<li>CSS</li>
+					</ul>
+					<li style="margin-top: 10px;">Tasks</li>
+					<ul>
+						<li>Collection of a diverse set of images that show buckets with broken teeth.</li>
+						<li>Labeling of areas where the detection failures can be observed.</li>
+						<li>Training of the neural network with the labeled images.</li>
+						<li>Evaluation of the model to assess the accuracy and effectiveness of the prediction</li>
+						<li>Deployment of the model through a web application to enable integration with other frameworks that trigger alerts.</li>
+
+					</ul>
+				</ul>
 			</div>
 		</section>
 		<section id="proyecto2">
 			<div class="proyecto-contenido">
-                <h2>Proyecto 2</h2>
-				<p>Descripción del proyecto 2.</p>
-				<img src="proyecto2.jpg" alt="Proyecto 2">
-				<video src="proyecto2.mp4" controls></video>
+                <h2>Human Pose Estimation</h2>
+				<video src="p2.mp4" controls></video>
+				<ul class="lista">
+					<li>Technology</li>
+					<ul>
+						<li>Python(Tensorflow,OpenCV,Numpy,Protobuf)</li>
+					</ul>
+					<li style="margin-top: 10px;">Tasks</li>
+					<ul>
+						<li>Selection of a pre-trained algorithm to adapt it to the current model</li>
+						<li>Adapt the program to the current need</li>
+						<li>Ability to integrate it with people detection for personnel counting, occupancy monitoring, development of autonomous vehicles.</li>
+					</ul>
+				</ul>
 			</div>
 		</section>
 		<section id="proyecto3">
 			<div class="proyecto-contenido">
-                <h2>Proyecto 3</h2>
-				<p>Descripción del proyecto 3.</p>
-				<img src="proyecto3.jpg" alt="Proyecto 3">
-				<video src="proyecto3.mp4" controls></video>
+				<h2>COVID Map</h2>
+				<img src="p3.png" alt="Proyecto 3">
+				<ul class="lista">
+					<li>Technology</li>
+					<ul>
+						<li>Python(Pandas,Plotly,Requests)</li>
+						<li>HTML</li>
+					</ul>
+					<li style="margin-top: 10px;">Tasks</li>
+					<ul>
+						<li>Data collection through an API</li>
+						<li>Modeling the data into a data frame</li>
+						<li>Data cleaning</li>
+						<li>Identifying the indicators to display</li>
+						<li>Performing the preliminary design of the dashboard</li>
+						<li>Deploying the dashboard on a web</li>
+					</ul>
+				</ul>
+			</div>
+		</section>
+		<section id="proyecto4">
+			<div class="proyecto-contenido">
+				<h2>Book review</h2>
+				<iframe title="Rating de libros" width="1024" height="612" src="https://app.powerbi.com/view?r=eyJrIjoiNGI0YTcyYmEtNmRjOC00NDU2LThiNTYtMzEwZWViMGExZGM2IiwidCI6ImJiMjQzMWE4LWFjZDItNGZmYy1iNGRhLTUxNThkZjhlYzcyZCJ9" frameborder="0" allowFullScreen="true"></iframe>
+				<ul class="lista">
+					<li>Technology</li>
+					<ul>
+						<li>PowerBI</li>
+						<li>SQL</li>
+					</ul>
+					<li style="margin-top: 10px;">Tasks</li>
+					<ul>
+						<li>Connecting SQL with Power BI</li>
+						<li>ETL (Extract, Transform, Load) process </li>
+						<li>"Identification of KPIs (Key Performance Indicators)</li>
+						<li>Creation of calculated measures using DAX</li>
+						<li>Interface modeling</li>
+						<li>Upload project to the Power BI cloud and configuration of the gateway for automatic updates</li>
+					</ul>
+				</ul>
+			</div>
+		</section>
+		<section id="proyecto5">
+			<div class="proyecto-contenido">
+                <h2>Estimation of demand</h2>
+				<img src="p5.png" alt="Proyecto 5">
+				<ul class="lista">
+					<li>Technology</li>
+					<ul>
+						<li>Python(Sklearn,Pandas,Numpy,Matplotlib)</li>
+						<li>SQL</li>
+					</ul>
+					<li style="margin-top: 10px;">Tasks</li>
+					<ul>
+						<li>Connecting SQL with Python</li>
+						<li>ETL (Extract, Transform, Load) process</li>
+						<li>Feature Selection</li>
+						<li>The selection of the most optimal training algorithm</li>
+						<li>Train the algorithm</li>
+						<li>Model evaluation using metrics</li>
+						<li>Adding data through a BCR API that provides inflation indexes</li>
+						<li>Retrain the model and evaluate again</li>
+
+					</ul>
+				</ul>
+			</div>
+		</section>
+		<section id="proyecto6">
+			<div class="proyecto-contenido">
+                <h2>Centralized page for reports</h2>
+				<video src="p6.mp4" controls></video>
+				<ul class="lista">
+					<li>Technology</li>
+					<ul>
+						<li>Python(Pandas,Numpy,Flask)</li>
+						<li>SQL</li>
+						<li>HTML</li>
+						<li>CSS</li>
+						<li>Power BI</li>
+					</ul>
+					<li style="margin-top: 10px;">Tasks</li>
+					<ul>
+						<li>Connecting SQL with Python</li>
+						<li>Authentication interface and connection with the user database</li>
+						<li>Implementation of views and centralization of links to reports</li>
+						<li>User testing for compliance</li>
+						<li>Deployment to production of the centralized website</li>
+					</ul>
+				</ul>
 			</div>
 		</section>
     </div>
