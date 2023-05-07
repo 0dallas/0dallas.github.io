@@ -83,6 +83,15 @@ section {
     align-items: center;
 }
 
+.power-bi{
+	width: 1350;
+	height: 1000;
+	margin-bottom: 10px;
+	transform-origin: 0 0;
+	padding-bottom: 0%;
+	-webkit-transform: scale(0.81);
+}
+
 img {
 	max-width: 100%;
 	height: auto;
@@ -92,6 +101,13 @@ img {
 h2 {
 	margin-top: 0;
 	font-weight: bold;
+}
+
+.tit-power-bi{
+	align-self: center;
+	align-items: center;
+	align-items: center;
+	transform-origin: center;
 }
 
 video {
