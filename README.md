@@ -6,12 +6,12 @@ Aquí encontrarás algunos de mis proyectos y trabajos relacionados con estas á
 
 Entre los proyectos que podrás encontrar en este repositorio, se incluyen:
 
-- Análisis exploratorio de datos
--  Visualización de datos
--  Modelos de aprendizaje automático (clasificación, regresión, agrupamiento, etc.)
--  Redes neuronales
--  Visión artificial
--  Minería de datos
++ Análisis exploratorio de datos
++  Visualización de datos
++  Modelos de aprendizaje automático (clasificación, regresión, agrupamiento, etc.)
++  Redes neuronales
++  Visión artificial
++  Minería de datos
 Y más  
 Si te interesa el campo de la inteligencia artificial, ciencia de datos y análisis de datos, este repositorio es una excelente manera de explorar algunos de los proyectos en los que he trabajado y los conocimientos que he adquirido. Además, si tienes alguna pregunta o sugerencia, ¡no dudes en contactarme!  
 
