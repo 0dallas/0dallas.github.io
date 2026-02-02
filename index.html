@@ -1,239 +1,549 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Portfolio</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William Figueroa | AI Solutions Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --secondary: #06b6d4;
+            --dark: #0b0f19;
+            --dark-light: #161b2c;
+            --gray: #94a3b8;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark); color: var(--light); line-height: 1.6; }
+
+        /* Navigation */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(11, 15, 25, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--light); text-decoration: none; font-weight: 500; transition: color 0.3s; opacity: 0.8; }
+        .nav-links a:hover { opacity: 1; color: var(--secondary); }
+
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; width: 600px; height: 600px; background: var(--primary); border-radius: 50%; filter: blur(200px); opacity: 0.1; top: -10%; right: -10%; }
+        .hero::after { content: ''; position: absolute; width: 400px; height: 400px; background: var(--secondary); border-radius: 50%; filter: blur(150px); opacity: 0.1; bottom: -10%; left: -10%; }
+        
+        .hero-content { max-width: 1000px; text-align: center; z-index: 1; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.25rem; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 50px; font-size: 0.875rem; color: var(--primary); margin-bottom: 2rem; }
+        
+        .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.02em; line-height: 1.1; }
+        .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .hero p { font-size: 1.25rem; color: var(--gray); max-width: 750px; margin: 0 auto 2.5rem; font-weight: 300; }
+        
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; }
+        .btn { padding: 1rem 2.5rem; border-radius: 12px; font-weight: 600; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.75rem; }
+        .btn-primary { background: var(--gradient); color: var(--white); box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5); }
+        .btn-secondary { background: rgba(255,255,255,0.05); color: var(--white); border: 1px solid rgba(255,255,255,0.1); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+
+        /* Stats */
+        .stats-container { display: flex; justify-content: center; gap: 5rem; margin-top: 5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 3rem; }
+        .stat-item { text-align: center; }
+        .stat-num { font-size: 2.5rem; font-weight: 700; color: var(--white); display: block; }
+        .stat-label { color: var(--gray); font-size: 0.9rem; margin-top: 0.25rem; }
+
+        /* Sections */
+        section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .section-subtitle { color: var(--gray); font-size: 1.1rem; }
+
+        /* Skills & Languages */
+        .skills-container { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        
+        .skill-card { background: var(--dark-light); padding: 1.75rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; height: 100%; }
+        .skill-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .skill-icon { font-size: 1.5rem; color: var(--secondary); margin-bottom: 1rem; }
+        .skill-card h3 { margin-bottom: 0.75rem; font-size: 1.1rem; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { font-size: 0.75rem; padding: 0.25rem 0.75rem; background: rgba(255,255,255,0.03); border-radius: 50px; color: var(--gray); border: 1px solid rgba(255,255,255,0.05); }
+
+        /* Language Side Panel */
+        .lang-card { background: linear-gradient(180deg, rgba(22, 27, 44, 1) 0%, rgba(139, 92, 246, 0.05) 100%); border: 1px solid rgba(139, 92, 246, 0.2); padding: 2rem; border-radius: 16px; height: 100%; position: sticky; top: 100px; }
+        .lang-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .lang-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .lang-info h4 { font-size: 1.1rem; font-weight: 600; color: var(--white); }
+        .lang-info span { color: var(--secondary); font-size: 0.9rem; }
+        .lang-circle { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+
+        /* Projects - GenAI Focus */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .project-card { background: var(--dark-light); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; display: flex; flex-direction: column; }
+        .project-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .project-card.featured { border: 1px solid rgba(139, 92, 246, 0.4); box-shadow: 0 0 20px rgba(139, 92, 246, 0.1); }
+        
+        .project-image { height: 160px; background: linear-gradient(45deg, #1e1b4b, #312e81); padding: 2rem; display: flex; align-items: center; justify-content: center; position: relative; }
+        .project-icon { font-size: 3rem; opacity: 0.5; color: var(--white); }
+        .project-type { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.1); }
+        
+        .project-content { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--white); }
+        .project-content p { color: var(--gray); font-size: 0.9rem; margin-bottom: 1.5rem; flex-grow: 1; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+        .tech-badge { font-size: 0.75rem; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.1); color: #c4b5fd; border-radius: 4px; }
+
+        /* Timeline & Education */
+        .timeline { border-left: 2px solid rgba(255,255,255,0.05); margin-left: 1rem; }
+        .timeline-item { padding-left: 2rem; padding-bottom: 3rem; position: relative; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before { content: ''; width: 12px; height: 12px; background: var(--secondary); border-radius: 50%; position: absolute; left: -7px; top: 5px; box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2); }
+        .t-date { color: var(--primary); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.25rem; display: block; }
+        .t-role { font-size: 1.25rem; font-weight: 600; color: var(--white); }
+        .t-company { color: var(--gray); font-size: 1rem; margin-bottom: 0.5rem; display: block; }
+        .t-desc { color: var(--gray); font-size: 0.95rem; list-style-position: inside; }
+
+        /* Education Layout Split */
+        .education-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .edu-column h3.col-title { color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; }
+        
+        .edu-item { display: flex; align-items: flex-start; gap: 1rem; background: var(--dark-light); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1rem; }
+        .edu-icon { min-width: 40px; height: 40px; background: rgba(255,255,255,0.03); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1rem; margin-top: 5px; }
+        .cert-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        
+        @media (max-width: 900px) {
+            .skills-container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .stats-container { flex-direction: column; gap: 2rem; padding-top: 2rem; margin-top: 3rem; }
+            .education-wrapper { grid-template-columns: 1fr; }
+            .lang-card { position: relative; top: 0; }
+        }
+    </style>
 </head>
 <body>
-	<header>
-		<h1>I'am William Figueroa, a passionate about technology</h1>
-	</header>
-	<main>
-	
-		<div class="descripcion" id="intro">
-			<h2 style="text-align: left;" >How am I?</h2>
-			<p style="text-align: justify;">Hi there! I am a data scientist/data analyst with a strong passion for leveraging data to drive  outcomes.</p>
-			<p style="text-align: justify;">In my current role, I am responsible for analyzing large datasets, developing predictive models, and communicating insights to stakeholders across the organization. I work closely with cross-functional teams to identify opportunities for growth and improvement, and I pride myself on delivering high-quality solutions that drive real business value.</p>
-			<p style="text-align: justify;">What I love most about my work is the opportunity to constantly learn and grow. I am always exploring new data science tools and techniques, and I am excited to be a part of an industry that is constantly evolving.</p>
-			<p style="text-align: justify;">If you're looking for a data scientist/data analyst who is passionate about data-driven decision making and delivering measurable results, I would be thrilled to connect with you!</p>
-		
-		</div>
-		<aside>
-			<div class="titulo_aside">
-				<p>Content</p>
-			</div>
-			<nav>
-				<ul>
-					<li><a href="#intro">How am I?</a></li>	
-					<li><a href="#proyecto1">Data Science (ML/DL)</a>
-						<ol><a href="#proyecto1">- Metabolic Syndrome Prediction</a></ol>
-						<ol><a href="#proyecto2">- Estimation of demand</a></ol>
-					</li>
-					<li><a href="#proyectoRS">Data Analyst</a>
-						<ol><a href="#proyectoRS">- Retail sales</a></ol>
-						<ol><a href="#proyecto3">- Book review</a></ol>
-						<ol><a href="#proyecto4">- COVID Map</a></ol>
-					</li>
-					<li><a href="#proyecto6">Computer Vision (RNN) </a>
-						<ol><a href="#proyecto6">- Broken Tooth Detection</a></ol>
-						<ol><a href="#proyecto7">- Human Pose Estimation</a></ol>
-					</li>
-					<li><a href="#proyecto5">Web Development </a>
-						<ol><a href="#proyecto5">- Centralized page for reports</a></ol>
-					</li>	
-					</li>	
-				</ul>
-			</nav>
-		</aside>
-        <div class="proyectos">
-		<section id="proyecto1">
-			<div class="proyecto-contenido">
-                <h2>Metabolic Syndrome Prediction</h2>
-				<img src="metabolic_syn.png" alt="Metabolic Syn">
-				<ul class="lista">
-					<li><b>Technology</b></li>
-					<ul>
-						<li>Python(Sklearn,Pandas,Numpy,Matplotlib,Seaborn)</li>
-					</ul>
-					<li style="margin-top: 10px;"><b>Tasks</b></li>
-					<ul>
-						<li>ETL (Extract, Transform, Load) process data</li>
-						<li>History Telling</li>
-						<li>Feature Selection</li>
-						<li>The selection of the most optimal training algorithm</li>
-						<li>Train the algorithm</li>
-						<li>Model evaluation using metrics</li>
-						<li>Search for best hyperparameters</li>
-						<li>Retrain the model and evaluate again</li>
-						<li>ROC analysis</li>
-						<li>Summary</li>
-						<li>More information in <a href="https://github.com/0dallas/Metabolic_Syndrome_Prediction">🔗</a></li>
 
-					</ul>
-				</ul>
-			</div>
-		</section>
-		<section id="proyecto2">
-			<div class="proyecto-contenido">
-                <h2>Estimation of demand</h2>
-				<img src="p5.png" alt="Proyecto 5">
-				<ul class="lista">
-					<li><b>Technology</b></li>
-					<ul>
-						<li>Python(Sklearn,Pandas,Numpy,Matplotlib)</li>
-						<li>SQL</li>
-					</ul>
-					<li style="margin-top: 10px;"><b>Tasks</b></li>
-					<ul>
-						<li>Connecting SQL with Python</li>
-						<li>ETL (Extract, Transform, Load) process</li>
-						<li>Feature Selection</li>
-						<li>The selection of the most optimal training algorithm</li>
-						<li>Train the algorithm</li>
-						<li>Model evaluation using metrics</li>
-						<li>Adding data through a BCR API that provides inflation indexes</li>
-						<li>Retrain the model and evaluate again</li>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">WF.</div>
+            <ul class="nav-links">
+                <li><a href="#projects">GenAI Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-					</ul>
-				</ul>
-			</div>
-		</section>
-		<section id="proyectoRS">
-			<div class="proyecto-contenido">
-				<h2>Retail Sales</h2>
-				<iframe class="power-bi" title="Retail Sales" width="1360" height="1000" src="https://app.powerbi.com/view?r=eyJrIjoiNTM4OTJkN2MtZGY4OC00NjJiLTgyNzQtMzk2MDViZDkwZGRmIiwidCI6ImJiMjQzMWE4LWFjZDItNGZmYy1iNGRhLTUxNThkZjhlYzcyZCJ9" frameborder="0" allowFullScreen="true"></iframe>
-				<ul class="lista">
-					<li><b>Technology</b></li>
-					<ul>
-						<li>PowerBI</li>
-						<li>SQL</li>
-					</ul>
-					<li style="margin-top: 10px;"><b>Tasks</b></li>
-					<ul>
-						<li>Connecting SQL with Power BI</li>
-						<li>ETL (Extract, Transform, Load) process </li>
-						<li>"Identification of KPIs (Key Performance Indicators)</li>
-						<li>Creation of calculated measures using DAX</li>
-						<li>Interface modeling</li>
-						<li>Upload project to the Power BI cloud and configuration of the gateway for automatic updates</li>
-					</ul>
-				</ul>
-			</div>
-		</section>
-		<section id="proyecto3">
-			<div class="proyecto-contenido">
-				<h2>Book review</h2>
-				<iframe  title="Book review" width="1024" height="612" src="https://app.powerbi.com/view?r=eyJrIjoiNGI0YTcyYmEtNmRjOC00NDU2LThiNTYtMzEwZWViMGExZGM2IiwidCI6ImJiMjQzMWE4LWFjZDItNGZmYy1iNGRhLTUxNThkZjhlYzcyZCJ9" frameborder="0" allowFullScreen="true"></iframe>
-				<ul class="lista">
-					<li><b>Technology</b></li>
-					<ul>
-						<li>PowerBI</li>
-						<li>SQL</li>
-					</ul>
-					<li style="margin-top: 10px;"><b>Tasks</b></li>
-					<ul>
-						<li>Connecting SQL with Power BI</li>
-						<li>ETL (Extract, Transform, Load) process </li>
-						<li>"Identification of KPIs (Key Performance Indicators)</li>
-						<li>Creation of calculated measures using DAX</li>
-						<li>Interface modeling</li>
-						<li>Upload project to the Power BI cloud and configuration of the gateway for automatic updates</li>
-					</ul>
-				</ul>
-			</div>
-		</section>
-		<section id="proyecto4">
-			<div class="proyecto-contenido">
-				<h2>COVID Map</h2>
-				<img src="p3.png" alt="Proyecto 3">
-				<ul class="lista">
-					<li><b>Technology</b></li>
-					<ul>
-						<li>Python(Pandas,Plotly,Requests)</li>
-						<li>HTML</li>
-					</ul>
-					<li style="margin-top: 10px;"><b>Tasks</b></li>
-					<ul>
-						<li>Data collection through an API</li>
-						<li>Modeling the data into a data frame</li>
-						<li>Data cleaning</li>
-						<li>Identifying the indicators to display</li>
-						<li>Performing the preliminary design of the dashboard</li>
-						<li>Deploying the dashboard on a web</li>
-						<li>More information in <a href="https://github.com/0dallas/COVID-Map">🔗</a></li>
-						
-					</ul>
-				</ul>
-			</div>
-		</section>
-		<section id="proyecto6">
-			<div class="proyecto-contenido">
-                <h2>Broken Tooth Detection</h2>
-				<video src="p1.mp4" controls></video>
-				<ul class="lista">
-					<li><b>Technology</b></li>
-					<ul>
-						<li>Python(Tensorflow,OpenCV,Numpy,Flask)</li>
-						<li>HTML</li>
-						<li>CSS</li>
-					</ul>
-					<li style="margin-top: 10px;"><b>Tasks</b></li>
-					<ul>
-						<li>Collection of a diverse set of images that show buckets with broken teeth.</li>
-						<li>Labeling of areas where the detection failures can be observed.</li>
-						<li>Training of the neural network with the labeled images.</li>
-						<li>Evaluation of the model to assess the accuracy and effectiveness of the prediction</li>
-						<li>Deployment of the model through a web application to enable integration with other frameworks that trigger alerts.</li>
-						<li>More information in <a href="https://github.com/0dallas/broken-tooth-detection">🔗</a></li>
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-brain"></i>
+                <span>GenAI & MLOps Specialist</span>
+            </div>
+            <h2 style="color: var(--secondary); font-weight: 600; margin-bottom: 1rem;">WILLIAM FIGUEROA</h2>
+            <h1>Architecting the Future with<br><span>Generative AI Systems</span></h1>
+            <p>AI Engineer and Machine Learning Specialist. I build autonomous agents, RAG architectures, and production-ready MLOps pipelines. Bridging the gap between research and ROI.</p>
+            
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View GenAI Portfolio <i class="fas fa-arrow-right"></i></a>
+                <a href="https://github.com/0dallas" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub</a>
+            </div>
 
-					</ul>
-				</ul>
-			</div>
-		</section>
-		<section id="proyecto7">
-			<div class="proyecto-contenido">
-                <h2>Human Pose Estimation</h2>
-				<video src="p2.mp4" controls></video>
-				<ul class="lista">
-					<li><b>Technology</b></li>
-					<ul>
-						<li>Python(Tensorflow,OpenCV,Numpy,Protobuf)</li>
-					</ul>
-					<li style="margin-top: 10px;"><b>Tasks</b></li>
-					<ul>
-						<li>Selection of a pre-trained algorithm to adapt it to the current model</li>
-						<li>Adapt the program to the current need</li>
-						<li>Ability to integrate it with people detection for personnel counting, occupancy monitoring, development of autonomous vehicles.</li>
-					</ul>
-				</ul>
-			</div>
-		</section>
-		<section id="proyecto5">
-			<div class="proyecto-contenido">
-                <h2>Centralized page for reports</h2>
-				<video src="p6.mp4" controls></video>
-				<ul class="lista">
-					<li><b>Technology</b></li>
-					<ul>
-						<li>Python(Pandas,Numpy,Flask)</li>
-						<li>SQL</li>
-						<li>HTML</li>
-						<li>CSS</li>
-						<li>Power BI</li>
-					</ul>
-					<li style="margin-top: 10px;"><b>Tasks</b></li>
-					<ul>
-						<li>Connecting SQL with Python</li>
-						<li>Authentication interface and connection with the user database</li>
-						<li>Implementation of views and centralization of links to reports</li>
-						<li>User testing for compliance</li>
-						<li>Deployment to production of the centralized website</li>
-						<li>More information in <a href="https://github.com/0dallas/Centralized-Reporting-Page">🔗</a></li>
-					</ul>
-				</ul>
-			</div>
-		</section>
-    </div>
-	</main>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-num">6+</span>
+                    <span class="stat-label">Years of Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">20+</span>
+                    <span class="stat-label">Projects Delivered</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">Global</span>
+                    <span class="stat-label">Reach (USA/Worldwide)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-header">
+            <h2 class="section-title">Featured Projects (GenAI & ML)</h2>
+            <p class="section-subtitle">High-impact solutions developed for international clients and corporations.</p>
+        </div>
+        
+        <div class="projects-grid">
+            
+            <div class="project-card featured">
+                <div class="project-image">
+                    <span class="project-type">USA Client • Autonomous Agent</span>
+                    <i class="fas fa-robot project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Autonomous B2B Purchasing Agent</h3>
+                    <p>Fully autonomous agent capable of executing complex multi-vendor purchases. Automated 90% of operational workflows, reducing team size from 30 FTEs to 3 supervisors using stealth anti-bot evasion and deterministic orchestration.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">LangGraph</span>
+                        <span class="tech-badge">AWS Bedrock</span>
+                        <span class="tech-badge">Playwright Stealth</span>
+                        <span class="tech-badge">Docker</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card featured">
+                <div class="project-image">
+                    <span class="project-type">USA Client • Voice AI</span>
+                    <i class="fas fa-microphone-lines project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Voice Identity Verification (ASR)</h3>
+                    <p>Real-time AI pipeline for validating identity in Call Centers. Combines semantic reasoning (LLM) with Fuzzy algorithms to process noisy ASR transcripts with 94%+ accuracy.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">OpenAI GPT-4</span>
+                        <span class="tech-badge">LangChain</span>
+                        <span class="tech-badge">FuzzyWuzzy</span>
+                        <span class="tech-badge">Microservices</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <span class="project-type">RAG / SQL Agent</span>
+                    <i class="fas fa-database project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Executive Text-to-SQL System</h3>
+                    <p>Strategic insight tool for Financiera Efectiva. Allows executives to query complex databases (SQL Server, PostgreSQL) using natural language via secure RAG agents.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">AWS Athena</span>
+                        <span class="tech-badge">LangChain</span>
+                        <span class="tech-badge">SQLAlchemy</span>
+                        <span class="tech-badge">Secrets Manager</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <span class="project-type">Multimodal AI</span>
+                    <i class="fas fa-id-card project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Multimodal Admission Agent</h3>
+                    <p>System combining computer vision and LLMs to process invoices and IDs. Reduced evaluation times by 50% using AWS Textract and vector search.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">AWS Textract</span>
+                        <span class="tech-badge">Pinecone</span>
+                        <span class="tech-badge">SageMaker</span>
+                        <span class="tech-badge">Hugging Face</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <span class="project-type">Fraud Detection</span>
+                    <i class="fas fa-shield-alt project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3>TrueScan Fraud Investigator</h3>
+                    <p>Web app for Interbank. A GenAI agent that automates fraud investigations by consolidating data and web queries. Reduced manual review time from hours to minutes (95% reduction).</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Streamlit</span>
+                        <span class="tech-badge">LangChain</span>
+                        <span class="tech-badge">AWS Fargate</span>
+                        <span class="tech-badge">Python</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <span class="project-type">Content Gen</span>
+                    <i class="fas fa-pen-nib project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Educational Content Generator</h3>
+                    <p>System for Anyone AI capable of drafting high-quality technical articles and blogs, plus a RAG-based educational chatbot for course materials.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Gemini</span>
+                        <span class="tech-badge">GCP</span>
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">LangGraph</span>
+                    </div>
+                </div>
+            </div>
+
+             <div class="project-card">
+                <div class="project-image">
+                    <span class="project-type">Computer Vision / IoT</span>
+                    <i class="fas fa-camera project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Mining Damage Detection</h3>
+                    <p>Computer vision model deployed on Edge devices (Jetson Nano) to detect damage on mining truck shovels in real-time.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">OpenCV</span>
+                        <span class="tech-badge">TensorFlow</span>
+                        <span class="tech-badge">IoT / Edge</span>
+                        <span class="tech-badge">AWS</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-header">
+            <h2 class="section-title">Technical Arsenal</h2>
+        </div>
+        
+        <div class="skills-container">
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-brain skill-icon"></i>
+                    <h3>Generative AI & LLMs</h3>
+                    <div class="skill-tags">
+                        <span class="tag">LangChain</span>
+                        <span class="tag">LangGraph</span>
+                        <span class="tag">OpenAI API</span>
+                        <span class="tag">AWS Bedrock</span>
+                        <span class="tag">RAG Architecture</span>
+                        <span class="tag">Fine-tuning (LoRA/QLoRA)</span>
+                        <span class="tag">Prompt Engineering</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-cloud skill-icon"></i>
+                    <h3>Cloud & Infrastructure</h3>
+                    <div class="skill-tags">
+                        <span class="tag">AWS (Lambda, SageMaker, ECS, Fargate)</span>
+                        <span class="tag">AWS Athena/Glue</span>
+                        <span class="tag">GCP</span>
+                        <span class="tag">Azure</span>
+                        <span class="tag">Terraform</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-code-branch skill-icon"></i>
+                    <h3>MLOps & CI/CD</h3>
+                    <div class="skill-tags">
+                        <span class="tag">GitHub Actions</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">MLflow</span>
+                        <span class="tag">Apache Airflow</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">CI/CD Pipelines</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database skill-icon"></i>
+                    <h3>Data Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Pinecone/ChromaDB</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">PySpark</span>
+                        <span class="tag">Databricks</span>
+                        <span class="tag">SQL Server</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-line skill-icon"></i>
+                    <h3>Machine Learning Core</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">XGBoost / LightGBM</span>
+                        <span class="tag">TensorFlow / Keras</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Computer Vision (OpenCV)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-card">
+                <h3 style="margin-bottom: 2rem; color: var(--white); font-size: 1.25rem;">
+                    <i class="fas fa-globe" style="color: var(--primary); margin-right: 0.5rem;"></i> 
+                    Languages
+                </h3>
+                
+                <div class="lang-item">
+                    <div class="lang-info">
+                        <h4>Spanish</h4>
+                        <span>Native</span>
+                    </div>
+                    <div class="lang-circle">ES</div>
+                </div>
+
+                <div class="lang-item">
+                    <div class="lang-info">
+                        <h4>English</h4>
+                        <span>Full Professional Proficiency</span>
+                    </div>
+                    <div class="lang-circle">EN</div>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 0.85rem; color: var(--gray);">
+                    <i class="fas fa-check-circle" style="color: var(--secondary);"></i> 
+                    Capable of leading technical meetings and documentation in both languages.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="t-date">Sep 2025 – Present</span>
+                <h3 class="t-role">AI Solutions Architect</h3>
+                <span class="t-company">Independent Professional (USA Clients)</span>
+                <p class="t-desc">Leading technical architecture for conversational agents and automation.
+                    <br>• Developing autonomous B2B purchasing bots using LangGraph and Playwright.
+                    <br>• Implementing voice verification systems with AWS Bedrock and NLP models.
+                    <br>• Managing stakeholders and translating business requirements into technical specs.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="t-date">Jul 2025 – Dec 2025</span>
+                <h3 class="t-role">GenAI & NLP Specialist</h3>
+                <span class="t-company">Financiera Efectiva</span>
+                <p class="t-desc">Spearheaded GenAI adoption defining MLOps standards.
+                    <br>• Created Multimodal Admission Agent reducing evaluation times by 50%.
+                    <br>• Developed Text-to-SQL system for real-time strategic insights.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="t-date">Jan 2024 – May 2025</span>
+                <h3 class="t-role">Senior Analytics Analyst (Tech Lead)</h3>
+                <span class="t-company">Interbank</span>
+                <p class="t-desc">Technical Lead for the fraud squad.
+                    <br>• Created TrueScan (Investigative Agent) reducing manual time by 95%.
+                    <br>• Implemented fraud classifiers based on audio (AWS Transcribe).
+                    <br>• Deployed RAG assistants for customer queries.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="t-date">Jun 2023 – Mar 2024</span>
+                <h3 class="t-role">Machine Learning Engineer</h3>
+                <span class="t-company">Anyone AI</span>
+                <p class="t-desc">
+                    • Led Code Reviews and improved CI/CD pipelines.
+                    <br>• Developed educational chatbot increasing learning capacity by 35%.
+                    <br>• Created content generation systems using LLMs.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="t-date">Nov 2020 – Jun 2023</span>
+                <h3 class="t-role">Data Scientist</h3>
+                <span class="t-company">Multitop</span>
+                <p class="t-desc">
+                    • Led digital transformation initiatives and customer sentiment analysis.
+                    <br>• Image classification system for new SKUs (40% time savings).
+                    <br>• Demand estimation models (ARIMA, LSTM) achieving 12% expenditure reduction.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="t-date">Apr 2019 – Aug 2020</span>
+                <h3 class="t-role">AI and IoT Researcher</h3>
+                <span class="t-company">CST Group</span>
+                <p class="t-desc">
+                    • Computer Vision solutions for mining (shovel damage detection).
+                    <br>• IoT/Edge integration with Raspberry Pi/Jetson Nano and real-time dashboards.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="section-header">
+            <h2 class="section-title">Education & Certifications</h2>
+        </div>
+        
+        <div class="education-wrapper">
+            <div class="edu-column">
+                <h3 class="col-title">Academic Degrees</h3>
+                
+                <div class="edu-item">
+                    <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div>
+                        <h3 style="color: var(--white); font-size: 1.1rem;">Master of Artificial Intelligence</h3>
+                        <span style="color: var(--secondary);">Universidad Internacional de La Rioja</span>
+                        <span style="display: block; color: var(--gray); font-size: 0.9rem;">2024 – 2025</span>
+                    </div>
+                </div>
+
+                <div class="edu-item">
+                    <div class="edu-icon"><i class="fas fa-university"></i></div>
+                    <div>
+                        <h3 style="color: var(--white); font-size: 1.1rem;">B.S. in Mechatronics Engineering</h3>
+                        <span style="color: var(--secondary);">National University of Engineering (UNI)</span>
+                        <span style="display: block; color: var(--gray); font-size: 0.9rem;">2014 – 2019</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edu-column">
+                <h3 class="col-title">Licenses & Certifications</h3>
+                
+                <div class="cert-grid">
+                    <div class="edu-item" style="padding: 1rem;">
+                        <div class="edu-icon" style="min-width: 30px; height: 30px; font-size: 0.9rem;"><i class="fas fa-certificate"></i></div>
+                        <div>
+                            <h4 style="color: var(--white); font-size: 1rem;">AI Leader GenAI</h4>
+                            <span style="color: var(--gray); font-size: 0.85rem;">DataRobot (2025)</span>
+                        </div>
+                    </div>
+                    <div class="edu-item" style="padding: 1rem;">
+                        <div class="edu-icon" style="min-width: 30px; height: 30px; font-size: 0.9rem;"><i class="fas fa-certificate"></i></div>
+                        <div>
+                            <h4 style="color: var(--white); font-size: 1rem;">Generative AI Solution Dev</h4>
+                            <span style="color: var(--gray); font-size: 0.85rem;">Databricks (2025)</span>
+                        </div>
+                    </div>
+                    <div class="edu-item" style="padding: 1rem;">
+                        <div class="edu-icon" style="min-width: 30px; height: 30px; font-size: 0.9rem;"><i class="fas fa-certificate"></i></div>
+                        <div>
+                            <h4 style="color: var(--white); font-size: 1rem;">AWS Generative AI Bootcamp</h4>
+                            <span style="color: var(--gray); font-size: 0.85rem;">Amazon Web Services (2024)</span>
+                        </div>
+                    </div>
+                    <div class="edu-item" style="padding: 1rem;">
+                        <div class="edu-icon" style="min-width: 30px; height: 30px; font-size: 0.9rem;"><i class="fas fa-certificate"></i></div>
+                        <div>
+                            <h4 style="color: var(--white); font-size: 1rem;">DevOps Professional with AWS</h4>
+                            <span style="color: var(--gray); font-size: 0.85rem;">Pragmma (2024)</span>
+                        </div>
+                    </div>
+                     <div class="edu-item" style="padding: 1rem;">
+                        <div class="edu-icon" style="min-width: 30px; height: 30px; font-size: 0.9rem;"><i class="fas fa-users-cog"></i></div>
+                        <div>
+                            <h4 style="color: var(--white); font-size: 1rem;">Scrum Master Professional (SMPC)</h4>
+                            <span style="color: var(--gray); font-size: 0.85rem;">Certiprof (2024)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div style="text-align: center; margin-top: 4rem; padding: 4rem; background: var(--dark-light); border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Let's Build the Future</h2>
+            <p style="color: var(--gray); margin-bottom: 2rem;">Open to discussing AI Architecture roles and challenging projects.</p>
+            <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="mailto:wrfigueroam@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Email Me</a>
+                <a href="https://linkedin.com/in/william-fm" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 2rem; color: var(--gray); border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem;">
+        <p>&copy; 2026 William Figueroa. Engineered with AI.</p>
+    </footer>
+
 </body>
 </html>
