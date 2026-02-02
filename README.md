@@ -12,7 +12,7 @@ The site is built with a "GenAI-first" aesthetic (Dark Mode, Neon Accents, Glass
 
 ## 🚀 Live Demo
 
-**[Link to your live site will go here]** *(Enable GitHub Pages in your repository settings to get your live URL, e.g., https://0dallas.github.io/portfolio)*
+**[https://0dallas.github.io/]**
 
 ## ✨ Key Features
 
