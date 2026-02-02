@@ -12,7 +12,7 @@ The site is built with a "GenAI-first" aesthetic (Dark Mode, Neon Accents, Glass
 
 ## 🚀 Live Demo
 
-**[https://0dallas.github.io/]**
+**https://0dallas.github.io/**
 
 ## ✨ Key Features
 
