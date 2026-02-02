@@ -1,18 +1,35 @@
-# README  
-## ¡Bienvenidos!
-¡Bienvenido a mi repositorio de GitHub! Este es mi portafolio en el campo de la inteligencia artificial, ciencia de datos y análisis de datos.  
+# ⚡ William Figueroa | AI Solutions Architect Portfolio
 
-Aquí encontrarás algunos de mis proyectos y trabajos relacionados con estas áreas, en los que he utilizado diversas herramientas y tecnologías para realizar análisis de datos, crear modelos de aprendizaje automático, y aplicar técnicas de inteligencia artificial para resolver problemas complejos.  
+![Project Status](https://img.shields.io/badge/Status-Live-success?style=for-the-badge)
+![Tech Stack](https://img.shields.io/badge/HTML5-CSS3-blueviolet?style=for-the-badge)
+![Focus](https://img.shields.io/badge/Focus-GenAI%20%26%20MLOps-cyan?style=for-the-badge)
 
-Entre los proyectos que podrás encontrar en este repositorio, se incluyen:  
+## 📖 About This Project
 
-+ Análisis exploratorio de datos  
-+  Visualización de datos  
-+  Modelos de aprendizaje automático (clasificación, regresión, agrupamiento, etc.)  
-+  Redes neuronales  
-+  Visión artificial  
-+  Minería de datos  
-Y más  
-Si te interesa el campo de la inteligencia artificial, ciencia de datos y análisis de datos, este repositorio es una excelente manera de explorar algunos de los proyectos en los que he trabajado y los conocimientos que he adquirido. Además, si tienes alguna pregunta o sugerencia, ¡no dudes en contactarme!  
+This repository hosts my personal professional landing page, designed to showcase my experience as an **AI Solutions Architect** and **Machine Learning Engineer**.
 
-¡Gracias por visitar mi portafolio!
+The site is built with a "GenAI-first" aesthetic (Dark Mode, Neon Accents, Glassmorphism) to reflect my specialization in building autonomous agents, RAG architectures, and production-ready ML pipelines. It serves as a central hub for my technical portfolio, skills, and career timeline.
+
+## 🚀 Live Demo
+
+**[Link to your live site will go here]** *(Enable GitHub Pages in your repository settings to get your live URL, e.g., https://0dallas.github.io/portfolio)*
+
+## ✨ Key Features
+
+* **Modern UI/UX:** Custom CSS variables (`:root`) enabling a dark, futuristic color palette (Deep Navy, Violet, Cyan).
+* **Fully Responsive:** Optimized for desktops, tablets, and mobile devices using CSS Grid and Flexbox.
+* **Performance Focused:** Pure HTML/CSS implementation with no heavy external frameworks.
+* **Interactive Elements:** Smooth scrolling, hover effects, and glassmorphism cards.
+* **Detailed Portfolio:** Dedicated sections for:
+    * **Featured Projects:** Deep dives into B2B Agents, Voice AI, and RAG systems.
+    * **Technical Arsenal:** Visual breakdown of skills (LangChain, AWS, MLOps, etc.).
+    * **Timeline:** Professional history from Research to Architecture.
+    * **Education:** Academic degrees and industry certifications.
+
+## 🛠️ Tech Stack
+
+* **Structure:** Semantic HTML5
+* **Styling:** CSS3 (Custom Properties, Flexbox, Grid, Media Queries)
+* **Icons:** FontAwesome 6.4.0
+* **Typography:** 'Inter' via Google Fonts
+
